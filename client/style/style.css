@@ -1,0 +1,152 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* main color : #f1c40f */
+
+html, body {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-login {
+    height: 100vh;
+    background-color: #f1c40f;   
+    clip-path: polygon(100% 0, 100% 89%, 50% 100%, 0 89%, 0 0);
+
+}
+.register-div {
+    font-size: 0.6rem;
+}
+
+.register-div .register-clik:link {
+    text-decoration: none;
+}
+
+.login {
+    transform: translate(0, 20vh);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#loginForm, #registerForm {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2rem;
+    min-width: 28vw;
+    min-height: 48vh;
+    border-radius: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    animation-name: moveToBottom;
+    animation-duration: 0.90s;
+    animation-timing-function: ease-out;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.575);
+    
+}
+
+.input-group {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.input-group input {
+    height: 2.3rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+   
+}
+
+.headlines {
+    /* background-color: #f1c40f; */
+    padding: 2rem;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 2rem;
+}
+
+.headlines h1 {
+    color: white;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+   
+}
+
+.error {
+    background-color: tomato;
+    height: 1.5rem;
+    padding: 0.3rem;
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 0.3rem;
+    margin-bottom: 0.6rem;
+}
+
+.btn-group-login-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    width: 100vw;
+    padding: 1rem;
+    background-color: #8e44ad;
+}
+
+.title-navbar {
+    font-size: 1.5rem;
+}
+
+@keyframes moveToBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveToTop {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveToRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
