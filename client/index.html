@@ -29,11 +29,11 @@
             <a class="register-click" id="registerSubmit" href="#">register here</a>
         </div>
         <div class="btn-group">
-            <div class="btn-group-login-register">
+            <div class="btn-group-login">
                 <button class="btn btn-primary" type="submit">login</button>
-            </div>
-            <div class="btn-google">
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <div class="btn-google">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </div>
             </div>
         </div>
       </form>
@@ -56,7 +56,7 @@
         </div>
         <div class="btn-group">
             <div class="btn-group-login-register">
-                <button type="submit">register</button>
+                <button class="btn btn-warning" type="submit">register</button>
                 <a class="back-login" href="#">back to login</a>
             </div>
         </div>
@@ -65,7 +65,18 @@
           <h1>smav</h1>
           <span>movie, anime, and tv show</span>
       </div>
-    </div>
+    </div>  
+</div>
+<div class="container-main">
+    <nav class="navbar">
+        <div class="logo-navbar">
+            <span class="title-navbar">smav</span>
+        </div>
+        <div class="btn-navbar">
+            <a class="" href="#"></a>
+            <a class="btn btn-light" href="#" onclick="signOut();">Sign out</a>
+        </div>
+    </nav>
 </div>
 </body>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
