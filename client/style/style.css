@@ -95,7 +95,7 @@ html, body {
     margin-bottom: 0.6rem;
 }
 
-.btn-group-login-register{
+.btn-group-login{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -105,10 +105,9 @@ html, body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    height: 5vh;
+    height: 10vh;
     width: 100vw;
-    padding: 1rem;
-    background-color: #8e44ad;
+    background-color: #f1c40f;
 }
 
 .title-navbar {
