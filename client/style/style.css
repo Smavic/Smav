@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* main color : #f1c40f */
 
 html, body {
     font-size: 16px;
@@ -12,10 +13,16 @@ html, body {
 
 .container-login {
     height: 100vh;
-    /* background-image: linear-gradient(to right bottom, 
-    #cb8ae6de, 
-    #752996d5), url(../src/img/background.jpg);
-    clip-path: polygon(0 0, 100% 0, 100% 94%, 0% 100%); */
+    background-color: #f1c40f;   
+    clip-path: polygon(100% 0, 100% 89%, 50% 100%, 0 89%, 0 0);
+
+}
+.register-div {
+    font-size: 0.6rem;
+}
+
+.register-div .register-clik:link {
+    text-decoration: none;
 }
 
 .login {
@@ -31,9 +38,8 @@ html, body {
     flex-direction: column;
     justify-content: space-evenly;
     padding: 2rem;
-    min-width: 40vw;
-    min-height: 45vh;
-    border: 5px solid rebeccapurple;
+    min-width: 28vw;
+    min-height: 48vh;
     border-radius: 1rem;
     font-size: 1rem;
     text-transform: uppercase;
@@ -57,15 +63,18 @@ html, body {
 }
 
 .headlines {
-    font-size: 6rem;
+    /* background-color: #f1c40f; */
+    padding: 2rem;
+    font-size: 3rem;
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
     font-weight: 700;
     margin-left: 2rem;
-    animation-name: moveToBottom;
-    animation-duration: 0.90s;
-    animation-timing-function: ease-out;
+}
+
+.headlines h1 {
+    color: white;
 }
 
 .btn-group {
