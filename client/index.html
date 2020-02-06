@@ -4,9 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style/style.css">
   <title>Smav</title>
 </head>
 <body>
-  <h1>Hello, World!!!</h1>
+  <div class="container-login">
+    <div class="login">
+      <form id="loginForm" method="POST">
+        <span class="error" ></span>
+        <div class="input-group">
+            <h3 class="tittle">login</h3>
+        </div>
+        <div class="input-group">
+            <label for="emailForm">Email :</label>
+            <input class="email" id="emailForm" type="email">
+        </div>
+        <div class="input-group">
+            <label for="passwordForm">Password :</label>
+            <input class="password" id="passwordForm" type="password">
+        </div>
+        <div class="btn-group">
+            <div class="btn-group-login-register">
+                <button type="submit">login</button>
+                <a class="register-click" id="registerSubmit" href="#">register</a>
+            </div>
+            <div class="btn-google">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
+        </div>
+      </form>
+      <form id="registerForm" method="POST">
+        <span class="error" ></span>
+        <div class="input-group">
+            <h3 class="tittle">Register</h3>
+        </div>
+        <div class="input-group">
+            <label for="nameForm">Name :</label>
+            <input class="name" id="nameForm" type="text">
+        </div>
+        <div class="input-group">
+            <label for="emailForm">Email :</label>
+            <input class="emailRegister" id="emailForm" type="email">
+        </div>
+        <div class="input-group">
+            <label for="passwordForm">Password :</label>
+            <input class="passwordRegister" id="passwordForm" type="password">
+        </div>
+        <div class="btn-group">
+            <div class="btn-group-login-register">
+                <button type="submit">register</button>
+            </div>
+        </div>
+      </form>
+      <div class="headlines">
+          <span>Search your favorite </span>
+          <span>movie, anime,</span>
+          <span>and tv show</span>
+      </div>
+    </div>
+</div>
 </body>
+<script src="./src/app.js"></script>
 </html>
