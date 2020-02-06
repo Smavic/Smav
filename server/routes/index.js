@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const usersRouter = require('./users');
+const tv = require('./tv');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,5 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.use("/users", usersRouter);
+router.use("/tv", tv);
+
 
 module.exports = router;
