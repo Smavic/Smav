@@ -25,6 +25,11 @@ $('.register-click').on('click', function(event) {
     $("#registerForm").show()
 })
 
+$('.back-login').on('click', function(event) {
+    $('#loginForm').show()
+    $("#registerForm").hide()
+})
+
 function checkLogin(){
     if(localStorage.getItem("token")){
         $('.container-login').hide()
