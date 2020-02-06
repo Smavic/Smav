@@ -1,7 +1,7 @@
 const {Favorite} = require('../models')
 const axios = require('axios');
 const instance = axios.create({
-  baseURL: 'http://api.tvmaze.com/search/shows?q=war',
+  baseURL: 'http://api.tvmaze.com/search/shows?q=',
   timeout: 1000,
 })
 
@@ -9,7 +9,7 @@ class tvController{
   static getMoviesData(req,res,next){
     // console.log(req.body)
     // console.log('a')
-    instance.get()
+    instance.get(`${req.body}`)
       .then(result=>{
         // console.log(result.data)
         // console.log(result.data[0].show.name,"title")
@@ -32,7 +32,11 @@ class tvController{
           movies.push(movie)
         }
         console.log(movies)
-        // res.result(200).json(movies)
+        if(movies.length == 0){
+          // res.result(204).json({message: 'no movies found'})
+        }else{
+          // res.result(200).json(movies)
+        }
       })
       .catch(err=>{
         console.log(err)
