@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const usersRouter = require('./users');
-const tv = require('./tv');
+const tvRouter = require('./tv');
+const animesRouter = require('./animes');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.use("/users", usersRouter);
-router.use("/tv", tv);
-
+router.use("/tv", tvRouter);
+router.use("/animes", animesRouter);
 
 module.exports = router;
