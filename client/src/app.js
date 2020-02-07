@@ -1,7 +1,7 @@
 $('.error').hide()
-// $("#registerForm").show()
-// $(".container-login").hide()
-// $(".container-main").show()
+$("#registerForm").hide()
+$(".container-login").show()
+$(".container-main").hide()
 
 var $err = ""
 
