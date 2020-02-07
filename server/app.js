@@ -9,7 +9,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const port = 3000
 
 const indexRouter = require('./routes/index');
 const errorHandler = require('./middleware/errorHandler');
@@ -35,10 +34,5 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(errorHandler);
-
-//port
-app.listen(port,()=>{
-  console.log(`Connected to port: ${port}`)
-})
 
 module.exports = app;
