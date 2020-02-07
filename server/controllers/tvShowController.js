@@ -14,7 +14,7 @@ class tvController{
         let data = results.data
         let movies = []
         for(let i = 0; i < data.length; i++){
-          if(data[i].show.image && data[i].show.premiered){
+          if(data[i].show.image && data[i].show.premiered && data[i].show.summary){
             console.log('woi')
             // console.log(data[i].show)
             // console.log(data[i].show.links.self)
@@ -48,7 +48,7 @@ class tvController{
         let data = results.data
         let movies = []
         for(let i = 0; i < data.length; i++){
-          if(data[i].show.image && data[i].show.premiered){
+          if(data[i].show.image && data[i].show.premiered && data[i].show.summary){
             let genres = data[i].show.genres.join(', ')
             let movie = {
               title: data[i].show.name,
