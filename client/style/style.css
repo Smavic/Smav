@@ -7,6 +7,7 @@
 /* main color : #f1c40f */
 
 html, body {
+    min-width: 1200px;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -112,6 +113,39 @@ html, body {
 
 .title-navbar {
     font-size: 1.5rem;
+}
+
+.card-tv, .card-movie, .card-anime {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-home {
+    width:300px;
+    border: 1px solid black;
+    border-radius: 5px;
+    float: left;
+    height: 150px;
+    background-size: cover;
+    margin: 15px;
+}
+
+.card-tv-list {
+    margin: 20px;
+    float: left;
+    width: 280px; 
+    height: 450px; 
+    border: 2px solid black;
+}
+.card-tv-mini1{
+    background-size: 280px 310px;
+    width: 280px; 
+    height: 310px;
+}
+.card-tv-mini2{
+    width: 280px;
+    height: 140px;
+    text-align: center;
 }
 
 @keyframes moveToBottom {
