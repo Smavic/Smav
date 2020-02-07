@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id"
+    content="398875137586-ml97p451d08f7rtqn33a2c783ij7km6h.apps.googleusercontent.com">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/style.css">
+  <title>Smav</title>
+</head>
+
+<body>
+  <div class="container-login">
+    <div class="login">
+      <form id="loginForm" method="POST">
+        <span class="error"></span>
+        <div class="input-group">
+          <h3 class="tittle">login</h3>
+        </div>
+        <div class="input-group">
+          <label for="emailForm">Email :</label>
+          <input class="email" id="emailForm" type="email">
+        </div>
+        <div class="input-group">
+          <label for="passwordForm">Password :</label>
+          <input class="password" id="passwordForm" type="password">
+        </div>
+        <div class="register-div">
+          <a class="register-click" id="registerSubmit" href="#">register here</a>
+        </div>
+        <div class="btn-group">
+          <div class="btn-group-login-register">
+            <button class="btn btn-primary" type="submit">login</button>
+          </div>
+          <div class="btn-google">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          </div>
+        </div>
+      </form>
+      <form id="registerForm" method="POST">
+        <span class="error"></span>
+        <div class="input-group">
+          <h3 class="tittle">Register</h3>
+        </div>
+        <div class="input-group">
+          <label for="nameForm">Name :</label>
+          <input class="name" id="nameForm" type="text">
+        </div>
+        <div class="input-group">
+          <label for="emailForm">Email :</label>
+          <input class="emailRegister" id="emailForm" type="email">
+        </div>
+        <div class="input-group">
+          <label for="passwordForm">Password :</label>
+          <input class="passwordRegister" id="passwordForm" type="password">
+        </div>
+        <div class="btn-group">
+          <div class="btn-group-login-register">
+            <button type="submit">register</button>
+            <a class="back-login" href="#">back to login</a>
+          </div>
+        </div>
+      </form>
+      <div class="headlines">
+        <h1>smav</h1>
+        <span>movie, anime, and tv show</span>
+      </div>
+    </div>
+  </div>
+
+    <div class="homepage" style="width: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f1c40f!important;">
+            <a class="navbar-brand frontPage" style="margin: 20px; padding-top: 10px;" href="#"><h1>SMAV</h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link toFavoritePage" href="#">Favorite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link movie-search" href="#">Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anime-search" href="#">Anime</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link tvshow-search" href="#">Tv</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+        <div>
+            <div class="top-movie" style="width: 100%; float: left;">
+                <div>
+                    <h3 style="text-align: center;">Movie</h3>
+                    <div>
+                        <div class="card-movie">
+                            
+    
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3  style="text-align: center;">Anime</h3>
+                    <div>
+                        <div class="card-anime">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3  style="text-align: center;">Tv Show</h3>
+                    <div>
+                        <div class="card-tv">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="moviePage" style="width: 100%; float: left; display: none;">
+                <div>
+                    <form class="form-inline my-2 my-lg-0" id="movie-search">
+                        <input class="form-control mr-sm-2" id="movie-search-key" type="search" placeholder="Search" aria-label="Search">
+                        <button id="movie-search-input" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="movies-list">
+                    
+                </div>
+            </div>
+            <div class="animePage" style="width: 100%; float: left; display: none;">
+                <div>
+                    <form class="form-inline my-2 my-lg-0" id="anime-search">
+                        <input class="form-control mr-sm-2" id="q" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="container">
+                    <div id="anime-list" class="row">
+                    </div>
+                </div>
+            </div>
+            <div class="tvshowPage" style="width: 100%; float: left; display: none;">
+                <div>
+                    <form class="form-inline my-2 my-lg-0" id="tvshow-search">
+                        <input class="form-control mr-sm-2" id="tvshow-search-key" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="tvshow-list">
+                </div>
+            </div>
+            <div class="favoritePage" style="width: 100%; float: left; display: none;">
+                <div class="all-list">
+                    <h1>append ke class all-list</h1>
+                </div>
+            </div>
+        </div>
+        
+    
+
+</body>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="./src//app.js"></script>
+
+</html>
