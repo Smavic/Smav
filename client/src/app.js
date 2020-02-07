@@ -73,24 +73,25 @@ $('.back-login').on('click', function(event) {
 })
 
 function addToFavorite(title,premiered,genres,image){
-    console.log('aa')
-    // $.ajax({
-    //   url: "http://localhost:3000/user/favorite",
-    //   method: "POST",
-    //   headers: {token: localStorage.token},
-    //   data: { 
-        // title: title,
-        // premiered: premiered,
-        // genres: genres,
-        // image: image
-    //   }
-    // })
-    // .done(result=>{
-    //   console.log('berhasil add')
-    // })
-    // .fail(err=>{
-    //   console.log('gagal add')
-    // })
+    console.log(title,premiered,genres,image)
+    $.ajax({
+      url: "http://localhost:3000/user/favorite",
+      method: "POST",
+      headers: {token: localStorage.token},
+      data: { 
+        title: title,
+        // summary: summary,
+        premiered: premiered,
+        genres: genres,
+        image: image
+      }
+    })
+    .done(result=>{
+      console.log('berhasil add')
+    })
+    .fail(err=>{
+      console.log('gagal add')
+    })
 }
 
 function checkLogin(){
@@ -248,6 +249,7 @@ function tvShowList(list){
     $('.tvshow-list').empty()
     for(let i = 0; i < list.length; i++){
         let title = String(list[i].title)
+        // let summary = String(list[i].summary)
         let premiered = String(list[i].premiered.substring(0,4))
         let genres = String(list[i].genres)
         let img = String(list[i].img.medium)
@@ -257,10 +259,14 @@ function tvShowList(list){
                         <div class="card-tv-mini2">
                             <p class="title">${list[i].title}</p>
                             <p class="year">${list[i].premiered.substring(0,4)}</p>
-                            <button onClick="addToFavorite(${title},${premiered},${genres},${img})" class="btn btn-danger">Add To Favorite</button>
+                            <button class="btn btn-danger add-to-fav">Add To Favorite</button>
                         </div>
                     </div>`
-        $('.tvshow-list').append(item)
+        let $item = $(item);
+        $item.on('click', '.add-to-fav', function(){
+            addToFavorite(title,premiered,genres,img);
+        })
+        $('.tvshow-list').append($item)
     }
 }
 
@@ -290,6 +296,7 @@ function getTvShowList(str){
         tvShowList(response)
     })
     .fail(err => {
+        console.log(err)
         $('.error').text(err.responseJSON.errors).show()
         setTimeout(() => {
             $('.error').hide() 
