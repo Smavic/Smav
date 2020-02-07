@@ -10,7 +10,7 @@ class movieControllers {
             for(let i = 0; i < 4; i++){
                 const obj = {
                     picture: dataMovie.data.results[i]["poster_path"],
-                    name: dataMovie.data.results[i]["original_title"],
+                    name: dataMovie.data.results[i]["title"],
                     release: dataMovie.data.results[i]["release_date"],
                     detail: dataMovie.data.results[i]["overview"],
                     vote: dataMovie.data.results[i]["vote_average"]
