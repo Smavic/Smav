@@ -120,30 +120,31 @@ html, body {
     flex-direction: row;
 }
 
-.card-home {
-    width:300px;
+.card-homepage {
+    width:270px;
     border: 1px solid black;
     border-radius: 5px;
     float: left;
     height: 150px;
-    background-size: cover;
+    background-size: 270px 150px;
     margin: 15px;
 }
 
 .card-tv-list {
+    text-align: center;
     margin: 20px;
     float: left;
-    width: 280px; 
+    width: 250px; 
     height: 450px; 
     border: 2px solid black;
 }
 .card-tv-mini1{
-    background-size: 280px 310px;
-    width: 280px; 
+    background-size: 250px 310px;
+    width: 250px; 
     height: 310px;
 }
 .card-tv-mini2{
-    width: 280px;
+    width: 250px;
     height: 140px;
     text-align: center;
 }
