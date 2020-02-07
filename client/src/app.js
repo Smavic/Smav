@@ -1,7 +1,8 @@
-$('.error').hide()
-// $("#registerForm").show()
+// $('.error').hide()
+// $("#registerForm").hide()
 // $(".container-login").hide()
 // $(".container-main").show()
+$(".homepage").show();
 
 var $err = ""
 
@@ -51,7 +52,6 @@ $('#registerForm').on('submit', function (event) {
     var emailRegister = $(".emailRegister").val()
     var passwordRegister = $(".passwordRegister").val()
     registerUser(nameRegister, emailRegister, passwordRegister)
-   
 })
 
 $('.register-click').on('click', function(event) {
@@ -149,7 +149,6 @@ function loginUser(email, password) {
         }, 1000);
     })
 }
-  
 function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     $.ajax({
@@ -251,3 +250,60 @@ function getTvShowList(str){
         }, 1000);
     })
 }
+
+// bagian anime
+
+var animelistTemplate = `
+<div class="anime-card col-xs-12 col-sm-6 col-lg-3">
+    <div class="card mb-3">
+        <img src="" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title"><a href="#" target="_blank"></a></h5>
+            <p class="card-text"></p>
+        </div>
+    </div>
+</div>`
+
+function animeHome() {
+    $.ajax({
+        url: `http://localhost:3000/animes/homepage`,
+        type: "get"
+    })
+    .done(function (result) {
+        console.log(result);
+        animelistAppend(result);
+    })
+    .fail(function (err) {
+        console.error(err);
+    });
+}
+animeHome();
+
+function animelistAppend(data) {
+    $("#anime-list").text("");
+    for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        var template = $(animelistTemplate);
+        template.find(".card img").attr("src", item.image_url);
+        template.find(".card-title a").attr("href", item.url);
+        template.find(".card-title a").text(item.title);
+        $("#anime-list").append(template);
+    }
+}
+
+$("#anime-search").on("submit", function (e) {
+    e.preventDefault();
+    var q = $("#animeSearch").find("#q").val();
+    console.log(q);
+    $.ajax({
+        url: `http://localhost:3000/animes/search?q=${q}`,
+        type: "GET"
+    })
+    .done(function (result) {
+        console.log(result);
+        animelistAppend(result)
+    })
+    .fail(function (err) {
+        console.error(err);
+    });
+});

@@ -76,6 +76,7 @@
     <div style="width: 100%;">
       <h1>SMAV</h1>
     </div>
+    <!-- sidebar -->
     <div style="width: 15%; height: 100%; float: left;">
       <div class="movie-search" style="margin-top: 20px;">
         <a href="#">Movie Search</a>
@@ -87,6 +88,8 @@
         <a href="#">Tv Show Search</a>
       </div>
     </div>
+    <!-- list -->
+    <!-- tv -->
     <div class="top-movie" style="width: 85%; float: left;">
       <div>
         <h3 style="text-align: center;">Movie</h3>
@@ -101,7 +104,6 @@
         <div>
           <div class="card-anime">
             <h1>append ke class card-anime</h1>
-
           </div>
         </div>
       </div>
@@ -113,18 +115,19 @@
         </div>
       </div>
     </div>
+
     <div class="moviePage" style="width: 85%; float: left; display: none;">
       <div>
         <form class="form-inline my-2 my-lg-0" id="movie-search">
           <input class="form-control mr-sm-2" id="movie-search-key" type="search" placeholder="Search"
             aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button id="movie-search-input" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button i>
         </form>
       </div>
       <div class="movies-list">
-        <h1>append ke class movie-list</h1>
       </div>
     </div>
+
     <div class="animePage" style="width: 85%; float: left; display: none;">
       <div>
         <form class="form-inline my-2 my-lg-0" id="anime-search">
@@ -133,10 +136,14 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-      <div class="anime-list">
-        <h1>append ke class anime-list</h1>
+      <div>
+        <div class="container">
+          <div class="row" id="anime-list">
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="tvshowPage" style="width: 85%; float: left; display: none;">
       <div>
         <form class="form-inline my-2 my-lg-0" id="tvshow-search">
@@ -149,6 +156,24 @@
       </div>
     </div>
   </div>
+
+
+
+  <!-- <div id="animepage">
+    <div class="jumbotron">
+      <h1>anime-list</h1>
+      <form id="animeSearch">
+        <div class="form-group">
+          <input type="text" class="form-control" id="q" placeholder="Search Anime">
+        </div>
+        <button class="btn btn-primary">Search</button>
+      </form>
+    </div>
+    <div class="container">
+      <div class="row" id="anime-list">
+      </div>
+    </div>
+  </div> -->
 
 </body>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
