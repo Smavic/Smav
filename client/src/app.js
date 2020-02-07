@@ -1,8 +1,6 @@
-// $('.error').hide()
 // $("#registerForm").hide()
-// $(".container-login").hide()
-// $(".container-main").show()
-$(".homepage").show();
+$(".container-login").hide()
+$(".homepage").show()
 
 var $err = ""
 
@@ -24,6 +22,15 @@ $('.tvshow-search').on('click', function(event) {
     event.preventDefault()
     display('tvshowPage')
 })
+$('.toFavoritePage').on('click', function(event) {
+    event.preventDefault()
+    display('favoritePage')
+})
+$('.frontPage').on('click', function(event) {
+    event.preventDefault()
+    display('top-movie')
+    tvShowListHome()
+})
 $('#movie-search').on('submit', function(event) {
     event.preventDefault()
 })
@@ -33,6 +40,7 @@ $('#anime-search').on('submit', function(event) {
 })
 $('#tvshow-search').on('submit', function(event) {
     event.preventDefault()
+    console.log('woi')
     let str = $('#tvshow-search').find('#tvshow-search-key').val()
     getTvShowList(str)
 })
@@ -64,6 +72,28 @@ $('.back-login').on('click', function(event) {
     $("#registerForm").hide()
 })
 
+function addToFavorite(title,premiered,genres,image){
+    console.log(title,premiered,genres,image)
+    $.ajax({
+      url: "http://localhost:3000/user/favorite",
+      method: "POST",
+      headers: {token: localStorage.token},
+      data: { 
+        title: title,
+        // summary: summary,
+        premiered: premiered,
+        genres: genres,
+        image: image
+      }
+    })
+    .done(result=>{
+      console.log('berhasil add')
+    })
+    .fail(err=>{
+      console.log('gagal add')
+    })
+}
+
 function checkLogin(){
     console.log("set");
     
@@ -90,6 +120,7 @@ function checkLogin(){
         })
     } else {
         $('.homepage').show()
+        tvShowListHome()
     }
 }
 
@@ -127,6 +158,7 @@ function registerUser(name, email, password){
         }, 1000);
     })
 }
+
 function loginUser(email, password) {
     $.ajax({
         method: 'POST',
@@ -170,12 +202,23 @@ function onSignIn(googleUser) {
     })
 }
 
-function tvShowListHome(list){
-    for(let i = 0; i < list.length; i++){
-        let item = `<a class="card-homepage" style="background-image: url(${list[i].img.medium});">
-                    </a>`
-        $('.card-tv').append(item)
-    }
+function tvShowListHome(){
+    $('.card-tv').empty()
+    $.ajax({
+        method: 'GET',
+        url: 'http://localhost:3000/tv/homepage'
+    })
+    .done(list => {
+        for(let i = 0; i < list.length; i++){
+            console.log(list[i].img.medium)
+            let item = `<div class="card-homepage" style="background-image: url(${list[i].img.medium});">
+                        </div>`
+            $('.card-tv').append(item)
+        }
+    })
+    .fail(err => {
+        console.log(err)
+    })   
 }
 
 function movieSearch(word) {
@@ -205,21 +248,30 @@ function movieSearch(word) {
 function tvShowList(list){
     $('.tvshow-list').empty()
     for(let i = 0; i < list.length; i++){
+        let title = String(list[i].title)
+        // let summary = String(list[i].summary)
+        let premiered = String(list[i].premiered.substring(0,4))
+        let genres = String(list[i].genres)
+        let img = String(list[i].img.medium)
         let item = `<div class="card-tv-list">
                         <div class="card-tv-mini1" style="background-image: url(${list[i].img.medium});">
                         </div>
                         <div class="card-tv-mini2">
                             <p class="title">${list[i].title}</p>
                             <p class="year">${list[i].premiered.substring(0,4)}</p>
-                            <button type="button" class="btn btn-warning">Details</button>
+                            <button class="btn btn-danger add-to-fav">Add To Favorite</button>
                         </div>
                     </div>`
-        $('.tvshow-list').append(item)
+        let $item = $(item);
+        $item.on('click', '.add-to-fav', function(){
+            addToFavorite(title,premiered,genres,img);
+        })
+        $('.tvshow-list').append($item)
     }
 }
 
 function display(page){
-    let pages = ['moviePage','animePage','tvshowPage','top-movie','container-login']
+    let pages = ['moviePage','animePage','tvshowPage','top-movie','container-login','favoritePage']
     for(let i = 0; i < pages.length; i++){
         if(page == pages[i]){
             $(`.${pages[i]}`).show()
@@ -231,9 +283,10 @@ function display(page){
 
 function getTvShowList(str){
     console.log(str)
+    // console.log('a')
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:3000/tv',
+        url: 'http://localhost:3000/tv/search',
         data: {
             searchKey: str
         }
@@ -293,7 +346,7 @@ function animelistAppend(data) {
 
 $("#anime-search").on("submit", function (e) {
     e.preventDefault();
-    var q = $("#animeSearch").find("#q").val();
+    var q = $("#anime-search").find("#q").val();
     console.log(q);
     $.ajax({
         url: `http://localhost:3000/animes/search?q=${q}`,
