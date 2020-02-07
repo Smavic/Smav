@@ -1,13 +1,19 @@
 $('.error').hide()
-$("#registerForm").hide()
-$(".container-login").hide()
-$(".container-main").show()
+// $("#registerForm").show()
+// $(".container-login").hide()
+// $(".container-main").show()
 
 var $err = ""
 
 $('.movie-search').on('click', function(event) {
     event.preventDefault()
     display('moviePage')
+})
+
+$('#movie-search-input').on('click', function(event) {
+    event.preventDefault()
+    var word = $("#movie-search-key").val()
+    movieSearch(word)
 })
 $('.anime-search').on('click', function(event) {
     event.preventDefault()
@@ -22,6 +28,7 @@ $('#movie-search').on('submit', function(event) {
 })
 $('#anime-search').on('submit', function(event) {
     event.preventDefault()
+
 })
 $('#tvshow-search').on('submit', function(event) {
     event.preventDefault()
@@ -58,8 +65,29 @@ $('.back-login').on('click', function(event) {
 })
 
 function checkLogin(){
+    console.log("set");
+    
     if(localStorage.getItem("token")){
         $('.container-login').hide()
+        $('.homepage').show()
+        console.log('masuk check login')
+        $.ajax({
+            method: 'GET',
+            url: 'http://localhost:3000/movie/'
+        })
+        .done(response => {
+            console.log(response)
+            for(let i = 0; i < response.length; i++){
+                let item = `<div style=" margin-right: 2rem; display: flex; flex-direction: column;">
+                <img src="https://image.tmdb.org/t/p/w500/${response[i].picture}" alt="" style="width: 10rem;">
+                <span>${response[i].name}</span>
+            </div>`
+                $('.card-movie').append(item)
+            }
+        })
+        .fail(err => {
+            console.log(err)
+        })
     } else {
         $('.homepage').show()
     }
@@ -126,7 +154,7 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     $.ajax({
         method: "POST",
-        url: "http://localhost:3000/users/googleSignIn",
+        url: "http://localhost:3000/users/loginGoogle",
         cache: false,
         data: {
             googleToken: id_token
@@ -151,6 +179,30 @@ function tvShowListHome(list){
     }
 }
 
+function movieSearch(word) {
+    $('.movies-list').empty()
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:3000/movie/search",
+        cache: false,
+        data: {
+            search: word
+        }
+    })
+    .done(response => {
+        for(let i = 0; i < response.length; i++){
+            let item = `<div class="card-movie-search" style=" margin-right: 2rem; display: flex; flex-direction: column;">
+            <img src="https://image.tmdb.org/t/p/w500/${response[i]["poster_path"]}" alt="" style="width: 10rem;">
+            <span>${response[i].title}</span>
+        </div>`
+            $('.movies-list').append(item)
+        }
+    })
+    .fail(err => {
+        console.log(err)
+    })
+}
+
 function tvShowList(list){
     $('.tvshow-list').empty()
     for(let i = 0; i < list.length; i++){
@@ -168,7 +220,7 @@ function tvShowList(list){
 }
 
 function display(page){
-    let pages = ['moviePage','animePage','tvshowPage','top-movie','container-login','homepage']
+    let pages = ['moviePage','animePage','tvshowPage','top-movie','container-login']
     for(let i = 0; i < pages.length; i++){
         if(page == pages[i]){
             $(`.${pages[i]}`).show()
