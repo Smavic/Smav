@@ -8,6 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      title: {
+        type: Sequelize.STRING
+      },
+      summary: {
+        type: Sequelize.STRING
+      },
+      year: {
+        type: Sequelize.STRING
+      },
+      genres: {
+        type: Sequelize.STRING
+      },
       link: {
         type: Sequelize.STRING
       },
