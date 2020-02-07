@@ -148,6 +148,19 @@ html, body {
     text-align: center;
 }
 
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.card-movie-search {
+    border-radius: 0.5rem;
+    animation-name: moveToTop;
+    animation-duration: 0.90s;
+    animation-timing-function: ease-out;
+}
+
 @keyframes moveToBottom {
     0% {
         opacity: 0;
