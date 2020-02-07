@@ -6,40 +6,68 @@ const instance = axios.create({
 })
 
 class tvController{
-  static getMoviesData(req,res,next){
-    // console.log(req.body)
+  static getMoviesData(req, res, next){
+    // console.log(req.query)
     // console.log('a')
-    instance.get(`${req.body}`)
-      .then(result=>{
-        // console.log(result.data)
-        // console.log(result.data[0].show.name,"title")
-        // console.log(result.data[0].show.summary,"summary")
-        // console.log(result.data[0].show.premiered,"year")
-        // console.log(result.data[0].show.image.original,"img")
-        // console.log(result.data[0].show.genres,"genre")
-        // console.log(genres,"genres")
-        let data = result.data
+    instance.get(`${req.query.searchKey}`)
+      .then(results=>{
+        let data = results.data
         let movies = []
         for(let i = 0; i < data.length; i++){
-          let genres = data[i].show.genres.join(', ')
-          let movie = {
-            title: data[i].show.name,
-            summary: data[i].show.summary,
-            premiered: data[i].show.premiered,
-            genres: genres,
-            img: data[i].show.image.original
+          if(data[i].show.image && data[i].show.premiered){
+            console.log('woi')
+            // console.log(data[i].show)
+            // console.log(data[i].show.links.self)
+            let genres = data[i].show.genres.join(', ')
+            let movie = {
+              title: data[i].show.name,
+              summary: data[i].show.summary,
+              premiered: data[i].show.premiered,
+              genres: genres,
+              img: data[i].show.image
+            }
+            movies.push(movie)
           }
-          movies.push(movie)
         }
-        console.log(movies)
+        // console.log(movies)
         if(movies.length == 0){
-          // res.result(204).json({message: 'no movies found'})
+          res.status(204).json({message: 'no movies found'})
         }else{
-          // res.result(200).json(movies)
+          res.status(200).json(movies)
         }
       })
       .catch(err=>{
-        console.log(err)
+        res.status(400).json({error: 'cant get data'})
+        // console.log(err)
+      })
+  }
+  static homePage(req, res, next){
+    let random = String.fromCharCode(math.floor(math.random()*26) + 71)
+    instance.get(random)
+      .then(results=>{
+        let data = results.data
+        let movies = []
+        for(let i = 0; i < data.length; i++){
+          if(data[i].show.image && data[i].show.premiered){
+            let genres = data[i].show.genres.join(', ')
+            let movie = {
+              title: data[i].show.name,
+              summary: data[i].show.summary,
+              premiered: data[i].show.premiered,
+              genres: genres,
+              img: data[i].show.image
+            }
+            movies.push(movie)
+          }
+          if(movies.length == 4){
+            res.status(200).json(movies)
+          }
+        }
+        // console.log(movies)
+      })
+      .catch(err=>{
+        res.status(400).json({error: 'cant get data'})
+        // console.log(err)
       })
   }
 }
