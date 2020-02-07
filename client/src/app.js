@@ -346,7 +346,7 @@ function animelistAppend(data) {
 
 $("#anime-search").on("submit", function (e) {
     e.preventDefault();
-    var q = $("#animeSearch").find("#q").val();
+    var q = $("#anime-search").find("#q").val();
     console.log(q);
     $.ajax({
         url: `http://localhost:3000/animes/search?q=${q}`,
