@@ -1,5 +1,8 @@
 $('.error').hide()
 $("#registerForm").hide()
+$(".container-login").hide()
+$(".container-main").show()
+
 var $err = ""
 
 $('#loginForm').on('submit', function (event) {
